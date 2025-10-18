@@ -1,7 +1,36 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CategoryListComponent } from './features/category/category-list/category-list.component';
+import { AddCategoryComponent as CategoryAddComponent } from './features/category/add-category/add-category.component';
+import { EditCategoryComponent } from './features/category/edit-category/edit-category.component';
+import { BlogpostListComponent } from './features/blog-post/blogpost-list/blogpost-list.component';
+import { AddBlogpostsComponent } from './features/blog-post/add-blogposts/add-blogposts.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'admin/categories',
+    component: CategoryListComponent 
+  },
+  {
+    path: 'admin/categories/add',
+    component: CategoryAddComponent
+  },
+  {
+    path: 'admin/categories/:id',
+    component: EditCategoryComponent
+
+  }
+  ,
+  {
+    path:'admin/blogposts',
+    component:BlogpostListComponent
+  },
+  {
+    path:'admin/blogposts/add',
+    component:AddBlogpostsComponent
+  },
+  
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
