@@ -1,4 +1,5 @@
-<p>add-blogposts works!</p>
+<div>
+<ng-container *ngIf="model">
 <div class="container">
     <h1 class="mt-3">Add Blogposts</h1>
     <form (ngSubmit)="onFormSubmit()" #form="ngForm">
@@ -29,7 +30,9 @@
                 
             </div>
              <div class="mt-3">
-                <label for="featureImageUrl" class="form-label">Feature Image URL</label>
+                <label for="featureImageUrl" class="form-label">Feature Image URL
+                    <button type="button" class="btn btn-light" (click)="openImageSelector()">Select Image</button>
+                </label>
                 <ng-container *ngIf="model.featuredImageUrl">
                     <div>
                         <img [src]="model.featuredImageUrl" alt="Featured Image" class="my-2" height="100">
@@ -48,20 +51,29 @@
             <div class="mt-3">
                 <label for="categories" class="form-label">Categories</label>
                 <ng-container *ngIf="categories$ | async as categories">
-                    <select id="categories" class="form-select" name="categories" [(ngModel)]="model.categories" multiple>
+                    <select id="categories" class="form-control" name="categories" [(ngModel)]="selectedCategories" multiple>
                         <option *ngFor="let category of categories" [value]="category.id" >{{ category.name }}</option>
                     </select>
                 </ng-container>
-            </div>
+            </div> 
 
             <div class="form-check mt-3">
                 <input type="checkbox" id="isVisible" class="form-check-input" name="isVisible"  [(ngModel)]="model.isVisible">
                 <label for="isVisible" class="form-check-label" name="isVisible">Is Visible</label>
 
             </div>
-            <div class="mt-3">
-                <button type="submit" class="btn btn-primary">Add Blogpost</button>
+            <div class="d-flex mt-3">
+                <button type="submit" class="btn btn-primary">Updated Blogpost</button>
+                <button type="button" class="btn btn-danger ms-2" (click)="onDelete()">Delete</button>
+                <button type="button" class="btn btn-secondary ms-2" (click)="onCancel()">Cancel</button>
             </div>
         </div>
     </form>
+</div>    
+</ng-container>
+</div>
+
+<div class="images-container-modal" [ngClass]="{'d-block': isImageSelectorVisible, 'd-none': !isImageSelectorVisible}">
+    <button type="button" class="btn btn-light" style="position: fixed; top: 10px; right: 10px;" (click)="isImageSelectorVisible=false">X</button>
+    <app-image-selector></app-image-selector>
 </div>

@@ -19,9 +19,14 @@
         <tr *ngFor="let post of blogPosts">
       
           <td>{{post.title}}</td>
-         
           <td>{{post.shortDescription}}</td>
           <td>{{post.isVisible}}</td>
+          <td>
+            <span *ngFor="let cat of post.categories">
+              <span class="badge bg-secondary me-1">{{cat.name}}</span>
+            </span>
+          </td>
+          <td><a class="btn btn-light" [routerLink]="['/admin/blogposts', post.id]">Edit</a></td>
 
         </tr>
 

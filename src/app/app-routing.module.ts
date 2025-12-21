@@ -5,6 +5,7 @@ import { AddCategoryComponent as CategoryAddComponent } from './features/categor
 import { EditCategoryComponent } from './features/category/edit-category/edit-category.component';
 import { BlogpostListComponent } from './features/blog-post/blogpost-list/blogpost-list.component';
 import { AddBlogpostsComponent } from './features/blog-post/add-blogposts/add-blogposts.component';
+import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-blogpost.component';
 
 const routes: Routes = [
   { path: 'admin/categories',
@@ -28,6 +29,10 @@ const routes: Routes = [
     path:'admin/blogposts/add',
     component:AddBlogpostsComponent
   },
+  {
+    path:'admin/blogposts/:id',
+    component:EditBlogpostComponent
+  }
   
 
 ];
